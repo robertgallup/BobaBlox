@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map For BobaBlox Library
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LED	KEYWORD1
+Knob	KEYWORD1
+Button	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+on	KEYWORD2
+off	KEYWORD2
+set	KEYWORD2
+blink	KEYWORD2
+fade	KEYWORD2
+
+value	KEYWORD2
+
+state	KEYWORD2
+isUp	KEYWORD2
+isDown	KEYWORD2
+isPressed	KEYWORD2
+isReleased	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
