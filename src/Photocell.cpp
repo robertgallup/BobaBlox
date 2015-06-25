@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////
 //
-//  Button.cpp
+//  Photocell.cpp
 //
-//  Simple class for switches/buttons
+//	Simple class for Photocells (CdS Photo Resistor)
 //  BobaBlox Library
 //
 //  The MIT License (MIT)
@@ -29,52 +29,19 @@
 //
 ///////////////////////////////////////////////////////////////
 
-#include "Button.h"
+#include "Photocell.h"
 
-#define DEBOUNCE_INTERVAL 14
-
-// Constructor : Button
-Button::Button (byte p)
+// Constructor
+Photocell::Photocell (byte p)
 {
   _pin = p;
-  pinMode (_pin, INPUT_PULLUP);
-  _lastState = digitalRead(_pin);
+  value();
 }
 
-// Check button down
-boolean Button::isDown ()
+// Read potentiometer value
+int Photocell::value ()
 {
-  return (digitalRead(_pin) == LOW);
+  _lastValue = analogRead(_pin);
+  return (_lastValue);
 }
 
-// Check button up
-boolean Button::isUp ()
-{
-  return (digitalRead(_pin) == HIGH);
-}
-
-boolean Button::wasPressed ()
-{
-	return detectEdge (HIGH);
-}
-
-boolean Button::wasReleased ()
-{
-	return detectEdge (LOW);
-
-}
-
-boolean Button::detectEdge (int type) {
-
-	boolean e = false;
-	if ((_lastState == type) && (digitalRead(_pin) == !type)) {
-		delay (DEBOUNCE_INTERVAL);
-		if (digitalRead(_pin) == !type) {
-			e = true;
-		}
-	}
-
-	_lastState = digitalRead(_pin);
-	return e;
-
-}

@@ -4,11 +4,13 @@
 //
 ///////////////////////////////////////////////////////////////
 
-#ifndef BOBABLOCKS_h
-#define BOBABLOCKS_h
+#ifndef BOBABLOX_h
+#define BOBABLOX_h
 
 #include "Button.h"
 #include "Knob.h"
 #include "LED.h"
+#include "Photocell.h"
+#include "Speaker.h"
 
 #endif
