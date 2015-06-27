@@ -2,11 +2,11 @@
 //  
 //  BobaBlox Example Sketch: Button
 //  
-//  The Button type:
+//  DECLARATION:
 //
 //  Button myButton(pin)		// pin = the pin connecting to the button
 //
-//  Button methods:
+//  METHODS:
 //
 //  int state ()			// Returns 0 for up, 1 for down
 //  boolean isDown ()			// Returns true is button is down, false otherwise
@@ -16,14 +16,13 @@
 //
 ////////////////////////////////////////////
 
-// Include libraries
 #include <BobaBlox.h>
 
 // Declarations
 LED boardLED(1);			// Use on-board LED
 Button myButton(2);			// Button is connected between pin #2 and Ground
 
-// Setup runs once at the beginning
+// Setup runs once
 void setup() {                
 }
 

@@ -40,7 +40,7 @@ class Speaker
   public:
   
     // Constructors
-    Speaker (byte)
+    Speaker (byte);
     Speaker (byte, byte);
     
     // Sound definition and control
@@ -51,7 +51,7 @@ class Speaker
 
     // Returns current frequency and color
     unsigned int frequency();
-    unsigned int color();
+    float color();
 
   private:
   
@@ -72,7 +72,7 @@ class Speaker
     
     // Utility methods
     void _calculateWave();                    // Calculates positive/negative halfcycle lengths given current frequency/color
-    void _cycleSpeaker(int);                  // Cycles the speaker positive or negative
+    void _cycleSpeaker(byte);                 // Cycles the speaker positive or negative
   	
 };
 

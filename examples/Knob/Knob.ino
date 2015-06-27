@@ -1,37 +1,50 @@
 ////////////////////////////////////////////
 //  
-//  BobaBlox Sketch: Knob
+//  BobaBlox Example Sketch: Knob
 //  
-//  LED Type:
+//	CIRCUIT:
+//      ___
+//     |   |
+//     |   |
+//     |___|
+//  .---------.
+//  |         |
+//  o----o----o
+//  |    |    |
+//  |    |    |
 //
-//  LED myKnob(pin)						// pin is LED pin
+//  5V  PIN  GND
 //
-//  LED Methods:
 //
-//  void value ();						// Returns the current knob value (0-1023)
+//  DECLARATION:
+//
+//  Knob myKnob(pin)	// pin is LED pin
+//
+//  METHOD:
+//
+//  void value ();	// Returns the current knob value (0-1023)
 //
 ////////////////////////////////////////////
 
-// Include libraries
 #include <BobaBlox.h>
 
 // Declarations
 LED boardLED(1);        // Declare an LED on pin #1
 Knob myKnob(1);         // Knob is connected to Analog pin #1 (digital pin #2)
 
-int knobValue;          // This will hold the knob value
-int blinkDelay;			// This will hold the blink delay
+int knobValue;          // The knob value
+int blinkDelay;		// The blink delay
 
-// the setup routine runs once at the beginning
+// Setup runs once
 void setup() {                
 
 }
 
-// The loop routine runs over and over again forever:
+// Loop repeats forever
 void loop() {
   
   // Check the knob value
-  // Convert the knob (0-1023) to a 0-1 second delay (0-1000).
+  // Convert the value (0-1023) to a 0-1 second delay (0-1000).
   // Note: see the Map command reference
   knobValue = myKnob.value();
   blinkDelay = map(knobValue, 0, 1023, 0, 1000);

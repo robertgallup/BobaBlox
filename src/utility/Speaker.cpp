@@ -31,19 +31,19 @@
 
 #include "Speaker.h"
 
-const unsigned long MICROS_PER_SECOND = 1000000;
+float MICROS_PER_SECOND = 1000000.0;
 
 const byte POSITIVE_HALFCYCLE = 0;
 const byte NEGATIVE_HALFCYCLE = 1;
 	
-#define MODE_FROM_HALFCYCLE(h) ((h==POSITIVE_HALFCYCLE)?HIGH:LOW)
+#define MODE_FROM_HALFCYCLE(h) ((h==POSITIVE_HALFCYCLE) ? HIGH : LOW)
 
 // Constructors
 Speaker::Speaker (byte pin)
 {
   _pin1 = pin;
   pinMode (_pin1, OUTPUT);
-  _soundONePin = true;
+  _onePin = true;
 }
 
 Speaker::Speaker (byte pin1, byte pin2)
@@ -54,9 +54,9 @@ Speaker::Speaker (byte pin1, byte pin2)
   _pin2 = pin2;
   pinMode (_pin2, OUTPUT);
 
-  _soundONePin = false;
+  _onePin = false;
 
-  _frequency = 1000;
+  _frequency = 0;
   _color = .5;
   _calculateWave ();
 
@@ -65,29 +65,29 @@ Speaker::Speaker (byte pin1, byte pin2)
 // Beep. Blocks the thread.
 void Speaker::beep (unsigned int freq, unsigned int length, float color)
 {
-	var unsigned long _beepTimer;
+	unsigned long _beepTimer;
 
 	// If frequency or pulse width have changed, calculate wave elements
-	color = color % 1;
+	color = color- floor(color);
 	if ((_frequency != freq) || (_color != (color))) {
 		_color = color;
 		_frequency = freq;
-		_calculateWave()
+		_calculateWave();
 	}
 
 	// For length of beep
-	beepTimer = millis();
+	_beepTimer = millis();
 	while ((millis() - _beepTimer) < length) {
 		
 		// First part of the cycle
 		_cycleTimer = micros();
 		_cycleSpeaker(POSITIVE_HALFCYCLE);
-		while ((micros() - cycleTimer) < _cycleLength[POSITIVE_HALFCYCLE]);
+		while ((micros() - _cycleTimer) < _cycleLength[POSITIVE_HALFCYCLE]);
 
 		// Second part of the cycle
 		_cycleTimer = micros();
 		_cycleSpeaker(NEGATIVE_HALFCYCLE);
-		while ((micros() - cycleTimer) < _cycleLength[NEGATIVE_HALFCYCLE]);
+		while ((micros() - _cycleTimer) < _cycleLength[NEGATIVE_HALFCYCLE]);
 
 	}
 
@@ -97,7 +97,7 @@ void Speaker::beep (unsigned int freq, unsigned int length, float color)
 void Speaker::tone (unsigned int freq, float color)
 {
 	// If frequency or pulse width have changed, calculate wave elements
-	color = color % 1;
+	color = color - floor(color);
 	if ((_frequency != freq) || (_color != (color))) {
 		_color = color;
 		_frequency = freq;
@@ -110,10 +110,10 @@ void Speaker::tone (unsigned int freq, float color)
 
 	// Now, to play the tone, check the timer to see if it's time to cycle
 	// If so, cycle the speaker and reset the timer to the other _halfCycle
-	if ((micros() - _cycleTimer) > _cycleLengh[_halfCycle]) {
-		_halfCycle = 1-halfCycle;
+	if ((micros() - _cycleTimer) > _cycleLength[_halfCycle]) {
+		_cycleTimer += _cycleLength[_halfCycle];
+		_halfCycle = 1-_halfCycle;
 		_cycleSpeaker(_halfCycle);
-		_cycleTimer = micros();
 	}
 	
 }
@@ -130,21 +130,26 @@ void Speaker::stop() {
 }
 
 // Return current frequency
-void Speaker::frequency() {
+unsigned int Speaker::frequency() {
 	return (_frequency);
 }
 
 // Return current tone color (pulse width)
-void Speaker::color() {
+float Speaker::color() {
 	return (_color);
 }
 
 // Private method to calculate wave components
 void Speaker::_calculateWave () {
 
-	var cycleLengthTotal = (1.0 / _frequency) * MICROS_PER_SECOND;
+	unsigned long cycleLengthTotal = (1.0 / float(_frequency)) * MICROS_PER_SECOND;
 	_cycleLength[POSITIVE_HALFCYCLE] = _color * cycleLengthTotal;
-	_cycleLength[NEGATIVE_HALFCYCLE] = cycleLengthTotal - _cycleLength[POSITIVE_HALFCYCLE;
+	_cycleLength[NEGATIVE_HALFCYCLE] = cycleLengthTotal - _cycleLength[POSITIVE_HALFCYCLE];
+
+	// Serial.println ("----------");
+	// Serial.println ("Color: " + String(_color));
+	// Serial.println (_cycleLength[0]);
+	// Serial.println (_cycleLength[1]);
 
 }
 
@@ -152,6 +157,6 @@ void Speaker::_calculateWave () {
 void Speaker::_cycleSpeaker(byte halfCycle) {
 
 	digitalWrite(_pin1, MODE_FROM_HALFCYCLE(halfCycle));
-	if (!_onePin) digitalWrite (!_pin2, MODE_FROM_HALFCYCLE(1-halfCycle));
+	if (!_onePin) digitalWrite (_pin2, MODE_FROM_HALFCYCLE(1-halfCycle));
 
 }

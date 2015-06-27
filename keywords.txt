@@ -9,8 +9,8 @@
 LED	KEYWORD1
 Knob	KEYWORD1
 Button	KEYWORD1
-Speaker KEYWORD1
-Photocell KEYWORD1
+Speaker	KEYWORD1
+Photocell	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -32,10 +32,10 @@ isReleased	KEYWORD2
 
 beep	KEYWORD2
 tone	KEYWORD2
-on	KEYWORD2
-off	KEYWORD2
+start	KEYWORD2
+stop	KEYWORD2
 frequency	KEYWORD2
-pulseWidth	KEYWORD2
+color	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
