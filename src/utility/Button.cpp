@@ -41,6 +41,12 @@ Button::Button (byte p)
   _lastState = digitalRead(_pin);
 }
 
+// Return button state (0=down, 1=up)
+int Button::state ()
+{
+  return (digitalRead(_pin));
+}
+
 // Check button down
 boolean Button::isDown ()
 {
@@ -53,11 +59,13 @@ boolean Button::isUp ()
   return (digitalRead(_pin) == HIGH);
 }
 
+// Check button was pressed
 boolean Button::wasPressed ()
 {
 	return detectEdge (HIGH);
 }
 
+// Check button was released
 boolean Button::wasReleased ()
 {
 	return detectEdge (LOW);

@@ -15,7 +15,7 @@
 //  void blink (n);				// Blinks n times with default blink delay
 //  void blink (n, delay);			// Blinks n times with specific delay
 //  void blink (n, delayON, delayOFF);		// Blinks n times with delayON and delayOFF
-//  void setBrightness (brightness);		// On a PWM pin, sets brightness of LED (0-255)
+//  void setBrightness (brightness);		// On an Analog Output (PWM) pin, sets LED brightness (0-255)
 //
 ////////////////////////////////////////////
 

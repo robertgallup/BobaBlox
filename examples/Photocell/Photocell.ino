@@ -45,7 +45,7 @@ void loop() {
   // Convert the value (0-1023) to a 0-1 second delay (0-1000).
   // Note: see the Map command reference
   cellValue = cell.value();
-  blinkDelay = map(knobValue, 0, 1023, 0, 1000);
+  blinkDelay = map(cellValue, 0, 1023, 0, 1000);
   boardLED.blink(1, blinkDelay);
   
 }

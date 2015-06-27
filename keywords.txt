@@ -16,19 +16,27 @@ Photocell	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+# LED
+
 on	KEYWORD2
 off	KEYWORD2
 set	KEYWORD2
 blink	KEYWORD2
 fade	KEYWORD2
 
+# KNOB + PHOTOCELL
+
 value	KEYWORD2
+
+# BUTTON
 
 state	KEYWORD2
 isUp	KEYWORD2
 isDown	KEYWORD2
-isPressed	KEYWORD2
-isReleased	KEYWORD2
+wasPressed	KEYWORD2
+wasReleased	KEYWORD2
+
+# SPEAKER
 
 beep	KEYWORD2
 tone	KEYWORD2
