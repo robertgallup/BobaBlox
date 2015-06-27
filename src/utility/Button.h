@@ -50,7 +50,7 @@ class Button
   
     int  _lastState;
     byte _pin;
-  	boolean detectEdge(int);
+  	boolean detectEdge(int, int);
   	
 };
 

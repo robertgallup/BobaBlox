@@ -62,22 +62,22 @@ boolean Button::isUp ()
 // Check button was pressed
 boolean Button::wasPressed ()
 {
-	return detectEdge (HIGH);
+	return detectEdge (HIGH, LOW);
 }
 
 // Check button was released
 boolean Button::wasReleased ()
 {
-	return detectEdge (LOW);
+	return detectEdge (LOW, HIGH);
 
 }
 
-boolean Button::detectEdge (int type) {
+boolean Button::detectEdge (int from, int to) {
 
 	boolean e = false;
-	if ((_lastState == type) && (digitalRead(_pin) == !type)) {
+	if ((_lastState == from) && (digitalRead(_pin) == to)) {
 		delay (DEBOUNCE_INTERVAL);
-		if (digitalRead(_pin) == !type) {
+		if (digitalRead(_pin) == to) {
 			e = true;
 		}
 	}

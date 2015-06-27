@@ -44,6 +44,11 @@ Speaker::Speaker (byte pin)
   _pin1 = pin;
   pinMode (_pin1, OUTPUT);
   _onePin = true;
+
+  _frequency = 0;
+  _color = .5;
+  _calculateWave ();
+
 }
 
 Speaker::Speaker (byte pin1, byte pin2)
@@ -145,11 +150,6 @@ void Speaker::_calculateWave () {
 	unsigned long cycleLengthTotal = (1.0 / float(_frequency)) * MICROS_PER_SECOND;
 	_cycleLength[POSITIVE_HALFCYCLE] = _color * cycleLengthTotal;
 	_cycleLength[NEGATIVE_HALFCYCLE] = cycleLengthTotal - _cycleLength[POSITIVE_HALFCYCLE];
-
-	// Serial.println ("----------");
-	// Serial.println ("Color: " + String(_color));
-	// Serial.println (_cycleLength[0]);
-	// Serial.println (_cycleLength[1]);
 
 }
 
