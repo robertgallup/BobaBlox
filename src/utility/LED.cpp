@@ -59,32 +59,38 @@ void LED::set (int ledState)
   digitalWrite (_pin, ledState & 1);
 }
 
+// A single default blink
 void LED::blink () {
   aBlink (DEFAULT_DURATION, DEFAULT_DURATION);
 }
 
+// Blink a number of default blinks
 void LED::blink (int times) {
   for (int i=0; i<times; i++) {
     blink();
   }
 }
 
+// Blink a number of times with symetrical on/off durations
 void LED::blink (int times, int duration) {
   for (int i=0; i<times; i++) {
     aBlink (duration, duration);
   }
 }
 
+// Blink a number of times with variable on/off durations
 void LED::blink (int times, int onDuration, int offDuration) {
   for (int i=0; i<times; i++) {
     aBlink (onDuration, offDuration);
   }
 }
 
+// Set the brightness for the LED
 void LED::setBrightness (int value) {
   analogWrite (_pin, value);
 }
 
+// Blinks a pin on/off with variable durations
 void LED::aBlink (int onDuration, int offDuration) {
   digitalWrite (_pin, HIGH);
   delay (onDuration);

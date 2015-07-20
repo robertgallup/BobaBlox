@@ -41,12 +41,13 @@ class Knob
   
     Knob(byte);
     int value();
+    int value(int, int);
 
   private:
   
     int  _lastValue;
     byte _pin;
-  
+
 };
 
 #endif

@@ -22,7 +22,8 @@
 //
 //  METHOD:
 //
-//  void value ();	// Returns the current knob value (0-1023)
+//  int value ();				// Returns the current value (0-1023)
+//  int value (int rangeStart, int rangeEnd)	// Returns the current value mapped to range specified
 //
 ////////////////////////////////////////////
 

@@ -38,10 +38,16 @@ Photocell::Photocell (byte p)
   value();
 }
 
-// Read potentiometer value
+// Read photocell value
 int Photocell::value ()
 {
   _lastValue = analogRead(_pin);
   return (_lastValue);
 }
 
+
+// Read photocell value and map to specified range
+int Photocell::value (int rangeStart, int rangeEnd) {
+  _lastValue = analogRead(_pin);
+  return (map(_lastValue, 0, 1023, rangeStart, rangeEnd));
+}

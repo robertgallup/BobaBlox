@@ -41,6 +41,7 @@ class Photocell
   
     Photocell(byte);
     int value();
+    int value(int, int);
 
   private:
   
