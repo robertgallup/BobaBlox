@@ -42,7 +42,7 @@ Knob::Knob (byte p)
 int Knob::value ()
 {
   _lastValue = analogRead(_pin);
-  return _lastValue;
+  return (_lastValue);
 }
 
 // Read potentiometer value and map to specified range
