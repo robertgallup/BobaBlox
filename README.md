@@ -83,18 +83,18 @@ Buttons are connected between a pin and ground. The internal pullup resistor is 
 
 The Button methods use basic debouncing, but may have difficulties with "noisy" buttons. Also, *wasPressed()* and *wasReleased()* are more responsive the more frequently they are called. In a simple loop without a lot of *delay()* calls, it should be reasonably responsive.
 
-##Knob
+## Knob
 
 Knobs are potentiometers. This element assumes that the "outside" leads of the Knob are connected to *ground* and *VCC*, respectively. The center lead is connected to an Analog Input pin.
 
-####Declaration
+#### Declaration
 
     Knob knob_name(pin);
     
 *knob_name* is name of the knob variable being declared.  
 *pin* is the number of the pin being used to connect the Knob.
 
-####Methods
+#### Methods
 
     int value ();								// Returns the current value (0-1023)
     int value (int rangeStart, int rangeEnd)	// Returns value mapped to specified range
@@ -103,18 +103,18 @@ Knobs are potentiometers. This element assumes that the "outside" leads of the K
 
 Potentiometers return values from 0 to 1023 on the 10-bit Arduino ADC. However, the range for setting the brightness of an LED, for example, is 0-255. Often, this is change in range is accomplished by using the *map()* function. However *map()* can be a bit complicated to understand. The version of *value()* that allows you to specify the range to return does the mapping automatically and is more straightforward.
 
-##Photocell
+## Photocell
 
 Photocells are identical to Knobs in implementation. This element assumes that the one lead from the photocell is connected to *VCC*. The other lead is connected to *ground* through a series resistor. The point where the photocell and series resistor are joined is connected to an Analog Input pin.
 
-####Declaration
+#### Declaration
 
     Photocell photocell_name(pin);
     
 *photocell_name* is name of the Photocell variable being declared.  
 *pin* is the number of the pin being used for the photocell.
 
-####Methods
+#### Methods
 
     int value ();								// Returns the current value (0-1023)
     int value (int rangeStart, int rangeEnd)	// Returns value mapped to specified range
@@ -123,11 +123,11 @@ Photocells are identical to Knobs in implementation. This element assumes that t
 *
 The notes from the Knob section apply here.
 
-##Speaker
+## Speaker
 
 In standard Arduino, speakers can be controlled using the tone() method. This is not available on the Trinket. So, the Speaker object implements related ways to make sound using one or two pins (see notes, below).
 
-####Declaration
+#### Declaration
 
     Speaker mySpeaker(pin)						// One speaker is pin, the other is ground
     Speaker mySpeaker(pin1,pin2)				// Speaker is connected between Pin1 and Pin2
