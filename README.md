@@ -1,4 +1,4 @@
-#BobaBlox Library Documentation  
+# BobaBlox Library Documentation  
 
 Version: 2.0  
 Author: Robert Gallup  
@@ -9,13 +9,15 @@ BobaBlox is an Arduino library that makes it easier to sketch code for basic har
 Here's an example of using BobaBlox in the standard blink example. First, standard blink:
 
     void setup() {
-    	pinMode (13, OUTPUT);    }
+    	pinMode (13, OUTPUT);
+    }
     
     void loop() {
     	digitalWrite (13, HIGH);
     	delay (500);
     	digitalWrite (13, LOW);
-    	delay (500);	    }
+    	delay (500);	
+    }
     
 When this is written using BobaBlox, it becomes:
 
@@ -23,7 +25,8 @@ When this is written using BobaBlox, it becomes:
     LED light(13);
     
     void loop () {
-    	light.blink();    }
+    	light.blink();
+    }
 
 In this case, setup() isn't required (though it has to be placed in the code). In addition, there are different versions of the blink method for changing the pin, number of blinks, the on-time, and off-time.
 
@@ -31,22 +34,22 @@ The same holds true for the other elements in BobaBlox: Button, Knob, Photocell,
 
 In addition to the documentation, below, see the example BobaBlox sketches when the library is installed.
 
-##Installation
+## Installation
 
 The library is installed like other Arduino libraries. You can download a zip of the library and install it using Sketch > Include Library > Add .ZIP Library ... . BobaBlox should also be available in the Arduino Library Manager. Install using the Library Manger by choosing: Sketch > Include Library > Manage Libraries ... . Then, search for and select BobaBlox.
 
-##LED
+## LED
 
 LED's are connected between an Arduino pin and ground, typically with a resistor in series.
 
-####Declaration
+#### Declaration
 
     LED led_name(pin);
     
 *led_name* is the name of the LED variable being declared.  
 *pin* is the number of the pin being used for the LED.
 
-####Methods
+#### Methods
 
     void on ();								// Turns the LED off
     void off ();							// Turns the LED on
@@ -57,18 +60,18 @@ LED's are connected between an Arduino pin and ground, typically with a resistor
     void blink (n, delayON, delayOFF);		// Blinks n times with delayON and delayOFF
     void setBrightness (brightness);		// On a PWM  pin, sets LED brightness (0-255)
 
-##Button
+## Button
 
 Buttons are connected between a pin and ground. The internal pullup resistor is used, so no other external components are required.
 
-####Declaration
+#### Declaration
 
     Button button_name(pin);
     
 *button_name* is name of the button variable being declared.  
 *pin* is the number of the pin being used for the button. Its mode will be set to *input_pullup*.
 
-####Methods
+#### Methods
 
     int state ()							// Returns 0 for up, 1 for down
     boolean isDown ()						// Returns true is button is down, false otherwise
@@ -133,7 +136,7 @@ In standard Arduino, speakers can be controlled using the tone() method. This is
 
 Often, a speaker is connected between one Arduino pin and ground. However, in the case of a Piezo, this can result in barely-audible audio. One technique to increase volume is to connect the speaker across two pins. This will drive the Piezo both positive and negative (rather than positive, then zero for a one-pin connection). This is handled by BobaBlox and results in double the volume.
 
-####Methods
+#### Methods
 
     void beep (frequency, length, color);		// Beeps at frequency for length with color
     void tone (frequency, color);				// Continuous tone at frequency and color
