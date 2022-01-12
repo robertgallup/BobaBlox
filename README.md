@@ -199,7 +199,7 @@ There are two versions of most routines, the "default" one that uses millisecond
     void setTimeMicros (time);                  // Sets the time (microseconds)
     void getTime ();                            // Returns the interval (milliseconds)
     void getTimeMicros ();                      // Returns the interval (microseconds)
-    void getTimeRemaining ();               	// Returns the timer's remaining time (milliseconds)
+    void getTimeRemaining ();                   // Returns the timer's remaining time (milliseconds)
     void getTimeRemainingMicros ();             // Returns the timer's remaining time (microseconds)
     void start ();                              // Starts the timer
     void restart ();                            // Same as start ()
