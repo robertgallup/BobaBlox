@@ -14,25 +14,25 @@ BobaBlox is an Arduino library that makes it easier to sketch code for basic har
 Here's an example using BobaBlox in the standard blink example. First, standard blink from Arduino examples:
 
     void setup() {
-        pinMode (13, OUTPUT);			// Define pin 13 as an output pin
+        pinMode (13, OUTPUT);            // Define pin 13 as an output pin
     }
     
     void loop() {
-        digitalWrite (13, HIGH);	// Turn the LED on
-        delay (500);				// Delay for 500 milliseconds
-        digitalWrite (13, LOW);		// Turn the LED off
-        delay (500);    			// Delay for 500 milliseconds
+        digitalWrite (13, HIGH);         // Turn the LED on
+        delay (500);                     // Delay for 500 milliseconds
+        digitalWrite (13, LOW);          // Turn the LED off
+        delay (500);                     // Delay for 500 milliseconds
     }
 
 When this is written using BobaBlox, it becomes:
 
-	#include <BobaBlox.h>				// Include the BobaBlox library
+	#include <BobaBlox.h>            // Include the BobaBlox library
 	
-	LED light(13);					// Define the LED on pin 13
+	LED light(13);                   // Define the LED on pin 13
 	 
-	void setup() {}					// No extra setup statements required
+	void setup() {}                  // No extra setup statements required
 	void loop () {
-	  light.blink();				// Each time through the loop, blink the LED on/off
+	  light.blink();                 // Each time through the loop, blink the LED on/off
 	}
 
 Notice that there's no need to type digitalWrite/Delay twice. Also, setup() is empty. The only statement needed, is a "blink" command in loop().
@@ -60,10 +60,10 @@ LED's are connected between an Arduino pin and ground, typically with a resistor
 
 #### Methods
 
-    void on ();								// Turns the LED off
-    void off ();							// Turns the LED on
-    void set (state);						// Sets LED on if state is greater than zero
-    void toggle();							// Toggles the LED on and off
+    void on ();                             // Turns the LED off
+    void off ();                            // Turns the LED on
+    void set (state);                       // Sets LED on if state is greater than zero
+    void toggle();                          // Toggles the LED on and off
     void blink ();                          // Blinks LED once with default 250ms on and off
     void blink (n);                         // Blinks n times with default blink delay
     void blink (n, delay);                  // Blinks n times with specific delay
@@ -150,8 +150,8 @@ In standard Arduino, speakers can be controlled using the tone() method. This is
 
 #### Declaration
 
-    Speaker speaker_name(pin);					// One speaker is pin, the other is ground
-    Speaker speaker_name(pin1,pin2);			// Speaker is connected between Pin1 and Pin2
+    Speaker speaker_name(pin);                  // One speaker is pin, the other is ground
+    Speaker speaker_name(pin1,pin2);            // Speaker is connected between Pin1 and Pin2
 
 ***Notes:***
 
@@ -184,8 +184,8 @@ Sometimes in programming, you want to have timed actions that do not delay the m
 
 #### Declaration
 
-    Timer timer_name();							// Timer preset to 1 second
-    Timer timer_name(interval);					// Timer preset to specified interval (milliseconds)
+    Timer timer_name();                        // Timer preset to 1 second
+    Timer timer_name(interval);                // Timer preset to specified interval (milliseconds)
 
 ***Notes:***
 
@@ -195,12 +195,12 @@ There are two versions of most routines, the "default" one that uses millisecond
 
 #### Methods
 
-    void setTime (time);       					// Sets the time (milliseconds)
-    void setTimeMicros (time);     				// Sets the time (microseconds)
-    void getTime ();               				// Returns the interval (milliseconds)
-    void getTimeMicros ();               		// Returns the interval (microseconds)
+    void setTime (time);                        // Sets the time (milliseconds)
+    void setTimeMicros (time);                  // Sets the time (microseconds)
+    void getTime ();                            // Returns the interval (milliseconds)
+    void getTimeMicros ();                      // Returns the interval (microseconds)
     void getTimeRemaining ();               	// Returns the timer's remaining time (milliseconds)
-    void getTimeRemainingMicros ();				// Returns the timer's remaining time (microseconds)
+    void getTimeRemainingMicros ();             // Returns the timer's remaining time (microseconds)
     void start ();                              // Starts the timer
     void restart ();                            // Same as start ()
     void isExpired ();                          // Returns true if the timer has expired, false if not
