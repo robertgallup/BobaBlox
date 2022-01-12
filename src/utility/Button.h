@@ -7,7 +7,7 @@
 //
 //  The MIT License (MIT)
 //  
-//  Copyright (c) 2014-2015 Robert Gallup
+//  Copyright (c) 2014-2022 Robert Gallup
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,10 +29,12 @@
 //
 ///////////////////////////////////////////////////////////////
 
-#ifndef BB_BUTTON_h
-#define BB_BUTTON_h
+#ifndef BUTTON_H
+#define BUTTON_H
 
 #include "Arduino.h"
+
+#define DEBOUNCE_INTERVAL 14
 
 // CLASS
 class Button
@@ -48,10 +50,20 @@ class Button
 
   private:
   
-    int  _lastState;
+    // Button Pin
     byte _pin;
-  	boolean detectEdge(int, int);
-  	
+
+    // Checks for press/release event
+    void _checkEdge();
+
+    // Associated with _checkEdge();
+    unsigned long _sampleTime;
+    int  _lastSample;
+    int  _thisSample;
+    int  _reading;
+    boolean _wasPressed  = false;
+    boolean _wasReleased = false;
+
 };
 
 #endif

@@ -11,6 +11,7 @@ Knob	KEYWORD1
 Button	KEYWORD1
 Speaker	KEYWORD1
 Photocell	KEYWORD1
+Timer	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -21,8 +22,9 @@ Photocell	KEYWORD1
 on	KEYWORD2
 off	KEYWORD2
 set	KEYWORD2
+toggle	KEYWORD2
 blink	KEYWORD2
-fade	KEYWORD2
+setBrightness	KEYWORD2
 
 # KNOB + PHOTOCELL
 
@@ -42,9 +44,22 @@ beep	KEYWORD2
 tone	KEYWORD2
 start	KEYWORD2
 stop	KEYWORD2
+mute	KEYWORD2
 frequency	KEYWORD2
 color	KEYWORD2
 
-#######################################
+# TIMER
+
+setTime	KEYWORD2
+setTimeMicros	KEYWORD2
+getTime	KEYWORD2
+getTimeMicros	KEYWORD2
+getTimeRemaining	KEYWORD2
+getTimeRemainingMicros	KEYWORD2
+start	KEYWORD2
+restart	KEYWORD2
+isExpired	KEYWORD2
+
+#####################################
 # Constants (LITERAL1)
 #######################################

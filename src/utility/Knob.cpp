@@ -7,7 +7,7 @@
 //
 //  The MIT License (MIT)
 //  
-//  Copyright (c) 2014-2015 Robert Gallup
+//  Copyright (c) 2014-2022 Robert Gallup
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ Knob::Knob (byte p)
 int Knob::value ()
 {
   _lastValue = analogRead(_pin);
-  return (_lastValue);
+  return _lastValue;
 }
 
 // Read potentiometer value and map to specified range

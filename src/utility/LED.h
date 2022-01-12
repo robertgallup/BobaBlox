@@ -7,7 +7,7 @@
 //
 //  The MIT License (MIT)
 //  
-//  Copyright (c) 2014 Robert W. Gallup
+//  Copyright (c) 2014-2022 Robert Gallup
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
 // 
 ///////////////////////////////////////////////////////////////
 
-#ifndef BB_LED_h
-#define BB_LED_h
+#ifndef LED_H
+#define LED_H
 
 #include "Arduino.h"
 
@@ -39,10 +39,15 @@ class LED
 {
   public:
   
+  public:
+  
+    LED ();
+    // LED (byte, boolean analog=false);
     LED (byte);
     void on ();
     void off ();
     void set (int);
+    void toggle ();
     void blink ();
     void blink (int);
     void blink (int, int);
@@ -52,8 +57,8 @@ class LED
   private:
   
     byte _pin;
-    void aBlink (int, int);
-  
+    void _blink (int, int);
+
 };
 
 #endif

@@ -7,7 +7,7 @@
 //
 //  The MIT License (MIT)
 //  
-//  Copyright (c) 2014-2015 Robert Gallup
+//  Copyright (c) 2014-2022 Robert Gallup
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -87,12 +87,12 @@ void Speaker::beep (unsigned int freq, unsigned int length, float color)
 		// First part of the cycle
 		_cycleTimer = micros();
 		_cycleSpeaker(POSITIVE_HALFCYCLE);
-		while ((micros() - _cycleTimer) < _cycleLength[POSITIVE_HALFCYCLE]);
+		while ((micros() - _cycleTimer) < _cycleTime[POSITIVE_HALFCYCLE]);
 
 		// Second part of the cycle
 		_cycleTimer = micros();
 		_cycleSpeaker(NEGATIVE_HALFCYCLE);
-		while ((micros() - _cycleTimer) < _cycleLength[NEGATIVE_HALFCYCLE]);
+		while ((micros() - _cycleTimer) < _cycleTime[NEGATIVE_HALFCYCLE]);
 
 	}
 
@@ -107,7 +107,7 @@ void Speaker::tone (unsigned int freq, float color)
 		_color = color;
 		_frequency = freq;
 		_calculateWave();
-		_soundON = true;
+		// _soundON = true;
 	}
 
 	// If the sound isn't on, we're done
@@ -115,8 +115,8 @@ void Speaker::tone (unsigned int freq, float color)
 
 	// Now, to play the tone, check the timer to see if it's time to cycle
 	// If so, cycle the speaker and reset the timer to the other _halfCycle
-	if ((micros() - _cycleTimer) > _cycleLength[_halfCycle]) {
-		_cycleTimer += _cycleLength[_halfCycle];
+	if ((micros() - _cycleTimer) > _cycleTime[_halfCycle]) {
+		_cycleTimer += _cycleTime[_halfCycle];
 		_halfCycle = 1-_halfCycle;
 		_cycleSpeaker(_halfCycle);
 	}
@@ -134,22 +134,30 @@ void Speaker::stop() {
 	_soundON = false;
 }
 
+// Mute/unmute sound
+void Speaker::mute(boolean mute) {
+
+	if (mute) {stop();} else {start();}
+
+}
+
 // Return current frequency
-unsigned int Speaker::frequency() {
+unsigned int Speaker::getFrequency() {
 	return (_frequency);
 }
 
 // Return current tone color (pulse width)
-float Speaker::color() {
+float Speaker::getColor() {
 	return (_color);
 }
 
 // Private method to calculate wave components
 void Speaker::_calculateWave () {
 
-	unsigned long cycleLengthTotal = (1.0 / float(_frequency)) * MICROS_PER_SECOND;
-	_cycleLength[POSITIVE_HALFCYCLE] = _color * cycleLengthTotal;
-	_cycleLength[NEGATIVE_HALFCYCLE] = cycleLengthTotal - _cycleLength[POSITIVE_HALFCYCLE];
+	// Cycle time in micro seconds
+	unsigned long fullCycleTime = (1.0 / float(_frequency)) * MICROS_PER_SECOND;
+	_cycleTime[POSITIVE_HALFCYCLE] = _color * fullCycleTime;
+	_cycleTime[NEGATIVE_HALFCYCLE] = fullCycleTime - _cycleTime[POSITIVE_HALFCYCLE];
 
 }
 

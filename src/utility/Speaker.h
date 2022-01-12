@@ -7,7 +7,7 @@
 //
 //  The MIT License (MIT)
 //  
-//  Copyright (c) 2014-2015 Robert Gallup
+//  Copyright (c) 2014-2022 Robert Gallup
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,8 @@
 //
 ///////////////////////////////////////////////////////////////
 
-#ifndef BB_SPEAKER_h
-#define BB_SPEAKER_h
+#ifndef SPEAKER_H
+#define SPEAKER_H
 
 #include "Arduino.h"
 
@@ -48,10 +48,11 @@ class Speaker
     void tone (unsigned int, float color=0.5);
     void start();
     void stop();
+    void mute(boolean);
 
     // Returns current frequency and color
-    unsigned int frequency();
-    float color();
+    unsigned int getFrequency();
+    float getColor();
 
   private:
   
@@ -66,9 +67,9 @@ class Speaker
     float _color;                             // Tone color (pulse width)
     
     // Waveform definition
-    unsigned long _cycleLength[2];            // Lengths for the two halfcycles
+    unsigned long _cycleTime[2];              // Lengths for the two halfcycles
     unsigned long _cycleTimer;                // For timing the half cycles
-    byte _halfCycle;                          // 0=positive halfcycle, 1=-halfcycle
+    byte _halfCycle;                          // 0 = positive halfcycle, 1 = negative halfcycle
     
     // Utility methods
     void _calculateWave();                    // Calculates positive/negative halfcycle lengths given current frequency/color

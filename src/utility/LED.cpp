@@ -7,7 +7,7 @@
 //
 //  The MIT License (MIT)
 //  
-//  Copyright (c) 2014 Robert W. Gallup
+//  Copyright (c) 2014-2022 Robert Gallup
 //  
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,13 +32,25 @@
 #include "LED.h"
 
 #define DEFAULT_DURATION 250
+#define _initPin(p) pinMode(p,OUTPUT);digitalWrite(p, LOW)
 
-// Constructor
+// Constructor: Built-in LED
+LED::LED ()
+{
+  _pin = LED_BUILTIN;
+  _initPin(_pin);
+}
+
+// Constructor: Specify LED pin
+// LED::LED (byte p, boolean analog)
+// {
+//   _pin = p;
+//   if (!analog) _initPin(_pin);
+// }
 LED::LED (byte p)
 {
   _pin = p;
-  pinMode (_pin, OUTPUT);
-  digitalWrite (_pin, LOW);
+  _initPin(_pin);
 }
 
 // Set LED to ON 
@@ -59,9 +71,15 @@ void LED::set (int ledState)
   digitalWrite (_pin, ledState & 1);
 }
 
+// Toggle LED
+void LED::toggle()
+{
+  digitalWrite(_pin, !digitalRead(_pin));
+}
+
 // A single default blink
 void LED::blink () {
-  aBlink (DEFAULT_DURATION, DEFAULT_DURATION);
+  _blink (DEFAULT_DURATION, DEFAULT_DURATION);
 }
 
 // Blink a number of default blinks
@@ -74,14 +92,14 @@ void LED::blink (int times) {
 // Blink a number of times with symetrical on/off durations
 void LED::blink (int times, int duration) {
   for (int i=0; i<times; i++) {
-    aBlink (duration, duration);
+    _blink (duration, duration);
   }
 }
 
 // Blink a number of times with variable on/off durations
 void LED::blink (int times, int onDuration, int offDuration) {
   for (int i=0; i<times; i++) {
-    aBlink (onDuration, offDuration);
+    _blink (onDuration, offDuration);
   }
 }
 
@@ -91,11 +109,9 @@ void LED::setBrightness (int value) {
 }
 
 // Blinks a pin on/off with variable durations
-void LED::aBlink (int onDuration, int offDuration) {
+void LED::_blink (int onDuration, int offDuration) {
   digitalWrite (_pin, HIGH);
   delay (onDuration);
   digitalWrite (_pin, LOW);
   delay (offDuration);
 }
-
-
