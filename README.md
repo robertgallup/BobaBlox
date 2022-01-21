@@ -6,6 +6,9 @@ Author:			Robert Gallup
 License:		MIT License
 ```
 
+
+>>>>>>> 2c9c646fbd16662780dfe913a905a81fd7227927
+
 ## BobaBlox Overview
 
 BobaBlox is an Arduino library that makes it easier to sketch code for basic hardware components. I've found while teaching Arduino workshops, the repetitiveness of typing multiple commands just to make an LED blink can get in the way of learning overall programming concepts. So, I developed BobaBlox. It should work with all standard Arduino boards, including variants such as the Adafruit Trinket.
