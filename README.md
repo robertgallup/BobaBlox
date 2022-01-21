@@ -1,13 +1,10 @@
 # BobaBlox Library Documentation  
 
 ```
-Version:		2.1.0
-Author:			Robert Gallup
-License:		MIT License
+Version:   2.1.0
+Author:	   Robert Gallup
+License:   MIT License
 ```
-
-
->>>>>>> 2c9c646fbd16662780dfe913a905a81fd7227927
 
 ## BobaBlox Overview
 
