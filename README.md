@@ -1,10 +1,10 @@
 # BobaBlox Library Documentation  
 
-**Version: 2.1.0**   
-**Author: Robert Gallup**   
-**Date: 1/11/2022**   
-
-
+```
+Version:		2.1.0
+Author:			Robert Gallup
+License:		MIT License
+```
 
 ## BobaBlox Overview
 
@@ -205,7 +205,8 @@ There are two versions of most routines, the "default" one that uses millisecond
 
    
 
-   
+
+
 
 - - -
 Copyright 2015-2022 Robert Gallup
