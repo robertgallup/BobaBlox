@@ -6,8 +6,7 @@
 
 
 
-- - -
-# BobaBlox Overview
+## BobaBlox Overview
 
 BobaBlox is an Arduino library that makes it easier to sketch code for basic hardware components. I've found while teaching Arduino workshops, the repetitiveness of typing multiple commands just to make an LED blink can get in the way of learning overall programming concepts. So, I developed BobaBlox. It should work with all standard Arduino boards, including variants such as the Adafruit Trinket.
 
@@ -39,19 +38,18 @@ Notice that there's no need to type digitalWrite/Delay twice. Also, setup() is e
 
 The same pattern holds true for the other elements in BobaBlox: Button, Knob, Photocell, Speaker and Timer. You can find out more in the following documentation. Also, see the example BobaBlox sketches for working samples.
 
-##Installation
+## Installation
 
 The library is installed like other Arduino libraries. You can download a zip of the library and install it using Sketch > Include Library > Add .ZIP Library ... . BobaBlox should also be available in the Arduino Library Manager. Install using the Library Manger by choosing: Sketch > Include Library > Manage Libraries ... . Then, search for and select BobaBlox.
 
 
-- - -
-# BobaBlox Object Reference
+## BobaBlox Object Reference
 
-## LED
+### LED
 
 LED's are connected between an Arduino pin and ground, typically with a resistor in series.
 
-#### Declaration
+##### Declaration
 
     LED led_name(pin);
 
@@ -71,7 +69,7 @@ LED's are connected between an Arduino pin and ground, typically with a resistor
     void setBrightness (brightness);        // On a PWM  pin, sets LED brightness (0-255)   
 
 - - -
-## Button
+### Button
 
 Buttons are connected between a pin and ground. The internal pull-up resistor is used, so no other external components are required.
 
@@ -98,7 +96,7 @@ The Button methods use basic debouncing, but may have difficulties with "noisy" 
    
 
 - - -
-## Knob
+### Knob
 
 Knobs are potentiometers. This element assumes that the "outside" leads of the Knob are connected to *ground* and *V+*, respectively. The center lead is connected to an analog Input pin.
 
@@ -121,7 +119,7 @@ Potentiometers return values from 0 to 1023 on the 10-bit Arduino analog to digi
    
 
 - - -
-## Photocell
+### Photocell
 
 Photocells are identical to Knobs in implementation. This element assumes that the one lead from the photocell is connected to *V+*. The other lead is connected to *ground* through a series resistor. The point where the photocell and series resistor are joined is connected to an Analog Input pin.
 
@@ -144,7 +142,7 @@ The notes from the Knob section apply here.
    
 
 - - -
-## Speaker
+### Speaker
 
 In standard Arduino, speakers can be controlled using the tone() method. This is not available on the Trinket. So, the Speaker object implements related ways to make sound using one or two pins (see notes, below).
 
@@ -178,7 +176,7 @@ Often, a speaker is connected between one Arduino pin and ground. However, in th
    
 
 - - -
-## Timer
+### Timer
 
 Sometimes in programming, you want to have timed actions that do not delay the main loop between actions. This is so you can continue checking a button, or blinking an LED, etc. The simple Timer object helps implement these "non-blocking" actions. 
 
