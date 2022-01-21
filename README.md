@@ -1,8 +1,10 @@
 # BobaBlox Library Documentation  
 
-**Version: 2.1.0**   
-**Author: Robert Gallup**   
-**Date: 1/11/2022**   
+```
+Version:    2.1.0
+Author:	    Robert Gallup
+Date: 	    1/11/2022
+```
 
 
 
