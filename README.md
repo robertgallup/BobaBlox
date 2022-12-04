@@ -1,7 +1,7 @@
 # BobaBlox Library Documentation  
 
 ```
-Version:   2.1.0
+Version:   2.2.0
 Author:	   Robert Gallup
 License:   MIT License
 ```
@@ -204,6 +204,7 @@ There are two versions of most routines, the "default" one that uses millisecond
     void isExpired ();                          // Returns true if the timer has expired, false if not
 
    
+
 
 
 
